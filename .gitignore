@@ -1,0 +1,8 @@
+# build and object folders
+bin/
+obj/
+
+# use-specific files
+*.suo
+*.user
+*.sln.docstates
