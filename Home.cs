@@ -65,7 +65,7 @@ namespace CompilerApp
             {
                 errorLines.Add(error.ToString());
             }
-            tbErrors.Lines = errorLines.ToArray();  Vv
+            tbErrors.Lines = errorLines.ToArray();
         }
 
 
