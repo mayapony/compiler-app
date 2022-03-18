@@ -21,8 +21,7 @@ namespace CompilerApp.models
 
         public override string ToString()
         {
-            return line + "行\t" + word + "\t\t" + type + '\n'
-                + "----------------------------------------------------------";
+            return line + "行\t" + word + "\t\t" + type + '\n';
         }
     }
 }

@@ -50,6 +50,8 @@
     <Compile Include="Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
+    <Compile Include="menus\CompilerMenu.cs" />
+    <Compile Include="menus\FileMenu.cs" />
     <Compile Include="models\Error.cs" />
     <Compile Include="models\Token.cs" />
     <Compile Include="Program.cs" />
