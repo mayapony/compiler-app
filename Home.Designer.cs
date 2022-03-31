@@ -60,6 +60,7 @@
             this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton9 = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.nFADFAMFAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -116,7 +117,8 @@
             // 编译ToolStripMenuItem
             // 
             this.编译ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.分词ToolStripMenuItem});
+            this.分词ToolStripMenuItem,
+            this.nFADFAMFAToolStripMenuItem});
             this.编译ToolStripMenuItem.Name = "编译ToolStripMenuItem";
             this.编译ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.编译ToolStripMenuItem.Text = "编译";
@@ -124,7 +126,7 @@
             // 分词ToolStripMenuItem
             // 
             this.分词ToolStripMenuItem.Name = "分词ToolStripMenuItem";
-            this.分词ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.分词ToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.分词ToolStripMenuItem.Text = "词法分析";
             this.分词ToolStripMenuItem.Click += new System.EventHandler(this.分词ToolStripMenuItem_Click);
             // 
@@ -165,7 +167,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtbCode.AutoWordSelection = true;
-            this.rtbCode.BackColor = System.Drawing.SystemColors.Control;
+            this.rtbCode.BackColor = System.Drawing.SystemColors.Window;
             this.rtbCode.BulletIndent = 4;
             this.rtbCode.Font = new System.Drawing.Font("Consolas", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtbCode.Location = new System.Drawing.Point(6, 20);
@@ -359,6 +361,7 @@
             this.toolStripButton6.Name = "toolStripButton6";
             this.toolStripButton6.Size = new System.Drawing.Size(76, 19);
             this.toolStripButton6.Text = "词法分析";
+            this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
             // 
             // toolStripButton7
             // 
@@ -400,6 +403,13 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 93.68192F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(741, 459);
             this.tableLayoutPanel4.TabIndex = 5;
+            // 
+            // nFADFAMFAToolStripMenuItem
+            // 
+            this.nFADFAMFAToolStripMenuItem.Name = "nFADFAMFAToolStripMenuItem";
+            this.nFADFAMFAToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.nFADFAMFAToolStripMenuItem.Text = "NFA_DFA_MFA";
+            this.nFADFAMFAToolStripMenuItem.Click += new System.EventHandler(this.nFADFAMFAToolStripMenuItem_Click);
             // 
             // Home
             // 
@@ -465,6 +475,7 @@
         private System.Windows.Forms.ToolStripMenuItem 分词ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 打开ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 保存ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nFADFAMFAToolStripMenuItem;
     }
 }
 

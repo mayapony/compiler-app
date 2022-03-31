@@ -1,6 +1,7 @@
 ﻿using CompilerApp.models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,7 @@ namespace CompilerApp.utils
 
         private char[] _separators = { ',', ';', '{', '}', '(', ')', '[', ']' };    // 分隔符
         private char[] _operators = { '+', '-', '*', '/', '=', '<', '>' };  // 运算符
-        private string[] _operatorsGroup = { "+=", "-=", ">=", "<=", "++", "--" }; 
+        private string[] _operatorsGroup = { "+=", "-=", ">=", "<=", "++", "--", "*=" }; 
 
 
         private int lineNumber = 0;
@@ -71,12 +72,13 @@ namespace CompilerApp.utils
                         word = "";
                     }
                     string charGroup = "";
-                    while (i < line.Length && !isInKeyword(line[i]) && !isInSpaceSeparator(line[i]) && !isExist(_separators, line[i]))
+                    while (i < line.Length && isExist(_operators, line[i]))
                     {
                         charGroup += line[i++];
                         _curIndex++;
                     }
-                    if (i < line.Length && char.IsDigit(line[i]) && (line[i - 1] == '+' || line[i - 1] == '-'))
+                    // +++100
+                    if (i < line.Length && (line[i - 1] == '+' || line[i - 1] == '-') && isAddToNumber(line, i))
                     {
                         charGroup = charGroup.Substring(0, charGroup.Length - 1);
                         word += line[i - 1];
@@ -225,6 +227,27 @@ namespace CompilerApp.utils
             for (int i = 0; i < word.Length; i++) 
                 if (word[i] != '.' && !char.IsDigit(word[i]))
                     return false;
+            return true;
+        }
+
+        private bool isAddToNumber(string line, int idx)
+        {
+            if (idx >= line.Length) return false;
+            bool flag = false;
+            for (int i = idx; i < line.Length; i++)
+            {
+                if (char.IsDigit(line[i])) flag = true;
+                else if (char.IsLetter(line[i])) return false;
+                else if (isInSpaceSeparator(line[i])) continue;
+                else break;
+            }
+            if (!flag) return false;
+            for (int i = idx-2; i >= 0; i--)
+            {
+                if (isInSpaceSeparator(line[i])) continue;
+                else if (isInKeyword(line[i])) return false;
+                else return true;
+            }
             return true;
         }
 

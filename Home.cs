@@ -1,5 +1,6 @@
 ﻿using CompilerApp.menus;
 using CompilerApp.models;
+using CompilerApp.pages;
 using CompilerApp.utils;
 using System;
 using System.Collections.Generic;
@@ -57,6 +58,16 @@ namespace CompilerApp
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void toolStripButton6_Click(object sender, EventArgs e)
+        {
+            compilerMenu.divisionCode(rtbCode, tbTokens, tbErrors);
+        }
+
+        private void nFADFAMFAToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Application.Run(new NFA_DFA_MFAForm());
         }
     }
 }

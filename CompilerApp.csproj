@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -54,11 +55,20 @@
     <Compile Include="menus\FileMenu.cs" />
     <Compile Include="models\Error.cs" />
     <Compile Include="models\Token.cs" />
+    <Compile Include="pages\NFA_DFA_MFAForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pages\NFA_DFA_MFAForm.Designer.cs">
+      <DependentUpon>NFA_DFA_MFAForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="utils\TokenUtil.cs" />
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\NFA_DFA_MFAForm.resx">
+      <DependentUpon>NFA_DFA_MFAForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

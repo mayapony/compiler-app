@@ -44,7 +44,7 @@ namespace CompilerApp.models
         public override string ToString()
         {
             string res = lineNumber.ToString() + "\t" + word.ToString() + "\t" + type.ToString() +
-                "\t" + validity.ToString() + "\t\t" + wordCode.ToString() + "\t" + startIdx.ToString();
+                "    \t" + validity.ToString() + "\t\t" + wordCode.ToString() + "\t" + startIdx.ToString();
             if (isError)
             {
                 res += "\t<- error";

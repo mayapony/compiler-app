@@ -29,7 +29,7 @@ namespace CompilerApp.menus
             // 写入tokens
             List<string> tokenLines = new List<string>();
             tokenLines.Add("--------------------------------------------------------");
-            tokenLines.Add("行号\t单词\t类型\t是否合法\t单词码\t起始下标");
+            tokenLines.Add("行号\t单词\t类型\t\t是否合法\t单词码\t起始下标");
             tokenLines.Add("--------------------------------------------------------");
             foreach (Token token in tokenUtil.tokens)
             {
@@ -74,6 +74,7 @@ namespace CompilerApp.menus
             else if (token.type == "数字")
             {
                 rtbCode.SelectionColor = Color.Green;
+                rtbCode.SelectionFont = new Font("Consolas", (float)20.5, FontStyle.Bold);
             }
             else if (token.type == "分隔符")
             {
