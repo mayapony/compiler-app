@@ -67,7 +67,8 @@ namespace CompilerApp
 
         private void nFADFAMFAToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Application.Run(new NFA_DFA_MFAForm());
+            NFA_DFA_MFAForm nfa_dfa_mfaForm = new NFA_DFA_MFAForm();
+            nfa_dfa_mfaForm.ShowDialog();
         }
     }
 }
