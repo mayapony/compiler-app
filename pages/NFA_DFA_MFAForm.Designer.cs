@@ -31,9 +31,9 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnValidFormal = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbFormal = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -103,9 +103,9 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.btnValidFormal);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.tbFormal);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(3, 14);
             this.groupBox1.Name = "groupBox1";
@@ -123,14 +123,15 @@
             this.button2.Text = "重置";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnValidFormal
             // 
-            this.button1.Location = new System.Drawing.Point(556, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "验证正规式";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnValidFormal.Location = new System.Drawing.Point(556, 12);
+            this.btnValidFormal.Name = "btnValidFormal";
+            this.btnValidFormal.Size = new System.Drawing.Size(75, 23);
+            this.btnValidFormal.TabIndex = 3;
+            this.btnValidFormal.Text = "验证正规式";
+            this.btnValidFormal.UseVisualStyleBackColor = true;
+            this.btnValidFormal.Click += new System.EventHandler(this.btnValidFormal_Click);
             // 
             // label2
             // 
@@ -141,12 +142,12 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "例如：(a*|b)*";
             // 
-            // textBox1
+            // tbFormal
             // 
-            this.textBox1.Location = new System.Drawing.Point(120, 14);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(341, 21);
-            this.textBox1.TabIndex = 1;
+            this.tbFormal.Location = new System.Drawing.Point(120, 14);
+            this.tbFormal.Name = "tbFormal";
+            this.tbFormal.Size = new System.Drawing.Size(341, 21);
+            this.tbFormal.TabIndex = 1;
             // 
             // label1
             // 
@@ -548,9 +549,9 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox gruopBox2;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnValidFormal;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbFormal;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn normal2NFAStartStatus;
