@@ -33,8 +33,8 @@ namespace CompilerApp.utils
             for (int i = left; i < right; i++)
             {
                 char cur = formula[i];
-                if (char.IsLetter(cur)) continue;
-                else if (isExist(_notBracket, cur) )
+                if (char.IsLetter(cur) || cur == '*') continue;
+                else if (cur == '|') // |* || 非法
                     if (i + 1 < right && isExist(_notBracket, formula[i + 1])) return false;
                     else continue;
                 else if (cur == '(')
@@ -48,6 +48,7 @@ namespace CompilerApp.utils
                             lCnt--;
                             if (lCnt == 0)
                             {
+                                Debug.WriteLine(formula.Substring(i + 1, idx - i - 1));
                                 isValid = verifyFormalFormula(formula, i + 1, idx - 1);
                                 break;
                             }
