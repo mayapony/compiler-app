@@ -27,7 +27,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -54,6 +54,7 @@
     <Compile Include="menus\CompilerMenu.cs" />
     <Compile Include="menus\FileMenu.cs" />
     <Compile Include="models\Error.cs" />
+    <Compile Include="models\PathList.cs" />
     <Compile Include="models\Token.cs" />
     <Compile Include="pages\NFA_DFA_MFAForm.cs">
       <SubType>Form</SubType>
