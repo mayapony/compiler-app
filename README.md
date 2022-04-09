@@ -1,4 +1,4 @@
-# 编译系统实验作业
+# 编译原理实验作业
 
 ## 一、分词器
 
@@ -24,4 +24,8 @@ for (f12=10.8;f12<=10.98.5;f21++)
 
 1. 判断正规式合法性
 2. 正规式转NFA
-   ![图 2](images/README/IMG_20220408-180123.png)  
+3. NFA转DFA
+   - 从正规式
+   ![图 3](images/README/nfa2dfa1.gif)
+   - 文件读入
+   ![图 4](images/README/nfa2dfa2.gif)
