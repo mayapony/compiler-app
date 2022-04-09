@@ -47,29 +47,29 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.gruopBox2 = new System.Windows.Forms.GroupBox();
+            this.btnGenNFA = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnOpenNFA = new System.Windows.Forms.Button();
             this.tbNFATail = new System.Windows.Forms.Label();
             this.tbNFAHead = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.dgNFA = new System.Windows.Forms.DataGridView();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.btnGenNFA = new System.Windows.Forms.Button();
             this.start = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.val = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.end = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnGenDFA = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.dgDFA = new System.Windows.Forms.DataGridView();
+            this.label10 = new System.Windows.Forms.Label();
+            this.button6 = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.tbDFATail = new System.Windows.Forms.Label();
+            this.tbDFAHead = new System.Windows.Forms.Label();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -78,7 +78,7 @@
             this.gruopBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgNFA)).BeginInit();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgDFA)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -286,7 +286,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gruopBox2.Controls.Add(this.btnGenNFA);
             this.gruopBox2.Controls.Add(this.button4);
-            this.gruopBox2.Controls.Add(this.button3);
+            this.gruopBox2.Controls.Add(this.btnOpenNFA);
             this.gruopBox2.Controls.Add(this.tbNFATail);
             this.gruopBox2.Controls.Add(this.tbNFAHead);
             this.gruopBox2.Controls.Add(this.label4);
@@ -299,6 +299,17 @@
             this.gruopBox2.TabStop = false;
             this.gruopBox2.Text = "正规式->NFA";
             // 
+            // btnGenNFA
+            // 
+            this.btnGenNFA.Enabled = false;
+            this.btnGenNFA.Location = new System.Drawing.Point(105, 413);
+            this.btnGenNFA.Name = "btnGenNFA";
+            this.btnGenNFA.Size = new System.Drawing.Size(101, 23);
+            this.btnGenNFA.TabIndex = 9;
+            this.btnGenNFA.Text = "生成NFA文件";
+            this.btnGenNFA.UseVisualStyleBackColor = true;
+            this.btnGenNFA.Click += new System.EventHandler(this.btnGenNFA_Click);
+            // 
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(212, 415);
@@ -308,14 +319,15 @@
             this.button4.Text = "保存";
             this.button4.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnOpenNFA
             // 
-            this.button3.Location = new System.Drawing.Point(6, 413);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(93, 23);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "读入NFA文件";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnOpenNFA.Location = new System.Drawing.Point(6, 413);
+            this.btnOpenNFA.Name = "btnOpenNFA";
+            this.btnOpenNFA.Size = new System.Drawing.Size(93, 23);
+            this.btnOpenNFA.TabIndex = 6;
+            this.btnOpenNFA.Text = "读入NFA文件";
+            this.btnOpenNFA.UseVisualStyleBackColor = true;
+            this.btnOpenNFA.Click += new System.EventHandler(this.btnOpenNFA_Click);
             // 
             // tbNFATail
             // 
@@ -355,6 +367,10 @@
             // 
             // dgNFA
             // 
+            this.dgNFA.AllowUserToAddRows = false;
+            this.dgNFA.AllowUserToDeleteRows = false;
+            this.dgNFA.AllowUserToResizeColumns = false;
+            this.dgNFA.AllowUserToResizeRows = false;
             this.dgNFA.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgNFA.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -365,141 +381,21 @@
             this.start,
             this.val,
             this.end});
+            this.dgNFA.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgNFA.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dgNFA.Location = new System.Drawing.Point(6, 20);
+            this.dgNFA.MultiSelect = false;
             this.dgNFA.Name = "dgNFA";
+            this.dgNFA.ReadOnly = true;
             this.dgNFA.RowHeadersVisible = false;
             this.dgNFA.RowTemplate.Height = 23;
+            this.dgNFA.ShowCellErrors = false;
+            this.dgNFA.ShowCellToolTips = false;
+            this.dgNFA.ShowEditingIcon = false;
+            this.dgNFA.ShowRowErrors = false;
             this.dgNFA.Size = new System.Drawing.Size(299, 334);
             this.dgNFA.TabIndex = 1;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.button5);
-            this.groupBox3.Controls.Add(this.dataGridView2);
-            this.groupBox3.Controls.Add(this.textBox3);
-            this.groupBox3.Controls.Add(this.label10);
-            this.groupBox3.Controls.Add(this.button6);
-            this.groupBox3.Controls.Add(this.label9);
-            this.groupBox3.Controls.Add(this.label7);
-            this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Location = new System.Drawing.Point(320, 3);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(310, 473);
-            this.groupBox3.TabIndex = 1;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "NFA->DFA";
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(211, 415);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 16;
-            this.button5.Text = "保存";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dataGridView2.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3});
-            this.dataGridView2.Location = new System.Drawing.Point(5, 20);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersVisible = false;
-            this.dataGridView2.RowTemplate.Height = 23;
-            this.dataGridView2.Size = new System.Drawing.Size(299, 334);
-            this.dataGridView2.TabIndex = 9;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "起始状态";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "接受符号";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "到达状态";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(104, 415);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 21);
-            this.textBox3.TabIndex = 15;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(4, 366);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(77, 12);
-            this.label10.TabIndex = 10;
-            this.label10.Text = "初始状态集：";
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(5, 413);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(93, 23);
-            this.button6.TabIndex = 14;
-            this.button6.Text = "读入NFA文件";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(4, 382);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(77, 12);
-            this.label9.TabIndex = 11;
-            this.label9.Text = "终止状态集：";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(81, 383);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(29, 12);
-            this.label7.TabIndex = 13;
-            this.label7.Text = "暂无";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(80, 366);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(29, 12);
-            this.label8.TabIndex = 12;
-            this.label8.Text = "暂无";
-            // 
-            // btnGenNFA
-            // 
-            this.btnGenNFA.Enabled = false;
-            this.btnGenNFA.Location = new System.Drawing.Point(105, 413);
-            this.btnGenNFA.Name = "btnGenNFA";
-            this.btnGenNFA.Size = new System.Drawing.Size(101, 23);
-            this.btnGenNFA.TabIndex = 9;
-            this.btnGenNFA.Text = "生成NFA文件";
-            this.btnGenNFA.UseVisualStyleBackColor = true;
-            this.btnGenNFA.Click += new System.EventHandler(this.btnGenNFA_Click);
+            this.dgNFA.TabStop = false;
             // 
             // start
             // 
@@ -522,6 +418,137 @@
             this.end.Name = "end";
             this.end.ReadOnly = true;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.btnGenDFA);
+            this.groupBox3.Controls.Add(this.button5);
+            this.groupBox3.Controls.Add(this.dgDFA);
+            this.groupBox3.Controls.Add(this.label10);
+            this.groupBox3.Controls.Add(this.button6);
+            this.groupBox3.Controls.Add(this.label9);
+            this.groupBox3.Controls.Add(this.tbDFATail);
+            this.groupBox3.Controls.Add(this.tbDFAHead);
+            this.groupBox3.Location = new System.Drawing.Point(320, 3);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(310, 473);
+            this.groupBox3.TabIndex = 1;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "NFA->DFA";
+            // 
+            // btnGenDFA
+            // 
+            this.btnGenDFA.Enabled = false;
+            this.btnGenDFA.Location = new System.Drawing.Point(104, 415);
+            this.btnGenDFA.Name = "btnGenDFA";
+            this.btnGenDFA.Size = new System.Drawing.Size(101, 23);
+            this.btnGenDFA.TabIndex = 10;
+            this.btnGenDFA.Text = "生成DFA文件";
+            this.btnGenDFA.UseVisualStyleBackColor = true;
+            this.btnGenDFA.Click += new System.EventHandler(this.btnGenDFA_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(211, 415);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 16;
+            this.button5.Text = "保存";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // dgDFA
+            // 
+            this.dgDFA.AllowUserToAddRows = false;
+            this.dgDFA.AllowUserToDeleteRows = false;
+            this.dgDFA.AllowUserToResizeColumns = false;
+            this.dgDFA.AllowUserToResizeRows = false;
+            this.dgDFA.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgDFA.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgDFA.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dgDFA.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgDFA.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgDFA.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3});
+            this.dgDFA.Location = new System.Drawing.Point(5, 20);
+            this.dgDFA.MultiSelect = false;
+            this.dgDFA.Name = "dgDFA";
+            this.dgDFA.ReadOnly = true;
+            this.dgDFA.RowHeadersVisible = false;
+            this.dgDFA.RowTemplate.Height = 23;
+            this.dgDFA.Size = new System.Drawing.Size(299, 334);
+            this.dgDFA.TabIndex = 9;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(4, 366);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(77, 12);
+            this.label10.TabIndex = 10;
+            this.label10.Text = "初始状态集：";
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(5, 413);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(93, 23);
+            this.button6.TabIndex = 14;
+            this.button6.Text = "读入DFA文件";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(4, 382);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(77, 12);
+            this.label9.TabIndex = 11;
+            this.label9.Text = "终止状态集：";
+            // 
+            // tbDFATail
+            // 
+            this.tbDFATail.AutoSize = true;
+            this.tbDFATail.Location = new System.Drawing.Point(81, 383);
+            this.tbDFATail.Name = "tbDFATail";
+            this.tbDFATail.Size = new System.Drawing.Size(29, 12);
+            this.tbDFATail.TabIndex = 13;
+            this.tbDFATail.Text = "暂无";
+            // 
+            // tbDFAHead
+            // 
+            this.tbDFAHead.AutoSize = true;
+            this.tbDFAHead.Location = new System.Drawing.Point(80, 366);
+            this.tbDFAHead.Name = "tbDFAHead";
+            this.tbDFAHead.Size = new System.Drawing.Size(29, 12);
+            this.tbDFAHead.TabIndex = 12;
+            this.tbDFAHead.Text = "暂无";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "start";
+            this.dataGridViewTextBoxColumn1.HeaderText = "起始状态";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "val";
+            this.dataGridViewTextBoxColumn2.HeaderText = "接受符号";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "end";
+            this.dataGridViewTextBoxColumn3.HeaderText = "到达状态";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
             // NFA_DFA_MFAForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -542,7 +569,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgNFA)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgDFA)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -575,21 +602,21 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnOpenNFA;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.DataGridView dgDFA;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label tbDFATail;
+        private System.Windows.Forms.Label tbDFAHead;
         private System.Windows.Forms.Button btnGenNFA;
         private System.Windows.Forms.DataGridViewTextBoxColumn start;
         private System.Windows.Forms.DataGridViewTextBoxColumn val;
         private System.Windows.Forms.DataGridViewTextBoxColumn end;
+        private System.Windows.Forms.Button btnGenDFA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
     }
 }
