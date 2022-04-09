@@ -84,5 +84,12 @@ namespace CompilerApp.models
             this.head = IDX - 1;
             this.tail = IDX;
         }
+
+        public PathList(int head, int tail, List<Path> paths)
+        {
+            this.head = head;
+            this.tail = tail;
+            this.paths = paths;
+        }
     }
 }
