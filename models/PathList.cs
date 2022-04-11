@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace CompilerApp.models
 {
-    public struct Path {
+    public struct Path
+    {
         public int start { get; set; }
         public int end { get; set; }
         public char val { get; set; }
@@ -26,10 +27,10 @@ namespace CompilerApp.models
 
 
     class PathList
-    {  
-        public int head { get; set; }
+    {
+        public SortedSet<int> head { get; set; }
 
-        public int tail { get; set; }
+        public SortedSet<int> tail { get; set; }
 
         public List<Path> paths = new List<Path>();
 
@@ -41,7 +42,7 @@ namespace CompilerApp.models
         /// <param name="other">另一个路径序列</param>
         public void connectPathList(PathList other)
         {
-            this.paths.Add(new Path(tail, other.head, '#'));
+            this.paths.Add(new Path(tail.ElementAt(0), other.head.ElementAt(0), '#'));
             this.tail = other.tail;
             this.paths = new List<Path>(this.paths.Concat(other.paths));
         }
@@ -53,12 +54,12 @@ namespace CompilerApp.models
         public void parallelPathList(PathList other)
         {
             this.paths = new List<Path>(this.paths.Concat(other.paths));
-            this.paths.Add(new Path(++IDX, this.head, '#'));
-            this.paths.Add(new Path(IDX, other.head, '#'));
-            this.paths.Add(new Path(this.tail, ++IDX, '#'));
-            this.paths.Add(new Path(other.tail, IDX, '#'));
-            this.tail = IDX;
-            this.head = IDX - 1;
+            this.paths.Add(new Path(++IDX, this.head.ElementAt(0), '#'));
+            this.paths.Add(new Path(IDX, other.head.ElementAt(0), '#'));
+            this.paths.Add(new Path(this.tail.ElementAt(0), ++IDX, '#'));
+            this.paths.Add(new Path(other.tail.ElementAt(0), IDX, '#'));
+            this.tail = new SortedSet<int>() { IDX };
+            this.head = new SortedSet<int>() { IDX - 1 };
         }
 
         /// <summary>
@@ -66,12 +67,12 @@ namespace CompilerApp.models
         /// </summary>
         public void closurePathList()
         {
-            this.paths.Add(new Path(++IDX, this.head, '#'));
+            this.paths.Add(new Path(++IDX, this.head.ElementAt(0), '#'));
             this.paths.Add(new Path(IDX, ++IDX, '#'));
-            this.paths.Add(new Path(tail, IDX, '#'));
-            this.paths.Add(new Path(tail, head, '#'));
-            this.tail = IDX;
-            this.head = IDX - 1;
+            this.paths.Add(new Path(tail.ElementAt(0), IDX, '#'));
+            this.paths.Add(new Path(tail.ElementAt(0), head.ElementAt(0), '#'));
+            this.tail = new SortedSet<int>() { IDX };
+            this.head = new SortedSet<int>() { IDX - 1 };
         }
 
         /// <summary>
@@ -81,11 +82,11 @@ namespace CompilerApp.models
         public PathList(char val)
         {
             this.paths.Add(new Path(++IDX, ++IDX, val));
-            this.head = IDX - 1;
-            this.tail = IDX;
+            this.head = new SortedSet<int>() { IDX - 1 };
+            this.tail = new SortedSet<int>() { IDX };
         }
 
-        public PathList(int head, int tail, List<Path> paths)
+        public PathList(SortedSet<int> head, SortedSet<int> tail, List<Path> paths)
         {
             this.head = head;
             this.tail = tail;
