@@ -37,15 +37,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.button7 = new System.Windows.Forms.Button();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnGenMFA = new System.Windows.Forms.Button();
+            this.dgMFA = new System.Windows.Forms.DataGridView();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.tbMFATail = new System.Windows.Forms.Label();
+            this.tbMFAHead = new System.Windows.Forms.Label();
             this.gruopBox2 = new System.Windows.Forms.GroupBox();
             this.btnGenNFA = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -62,19 +59,22 @@
             this.btnGenDFA = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.dgDFA = new System.Windows.Forms.DataGridView();
-            this.label10 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
-            this.tbDFATail = new System.Windows.Forms.Label();
-            this.tbDFAHead = new System.Windows.Forms.Label();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label10 = new System.Windows.Forms.Label();
+            this.btnOpenDFA = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.tbDFATail = new System.Windows.Forms.Label();
+            this.tbDFAHead = new System.Windows.Forms.Label();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgMFA)).BeginInit();
             this.gruopBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgNFA)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -184,12 +184,12 @@
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox4.Controls.Add(this.button7);
-            this.groupBox4.Controls.Add(this.dataGridView3);
+            this.groupBox4.Controls.Add(this.btnGenMFA);
+            this.groupBox4.Controls.Add(this.dgMFA);
             this.groupBox4.Controls.Add(this.label14);
             this.groupBox4.Controls.Add(this.label13);
-            this.groupBox4.Controls.Add(this.label11);
-            this.groupBox4.Controls.Add(this.label12);
+            this.groupBox4.Controls.Add(this.tbMFATail);
+            this.groupBox4.Controls.Add(this.tbMFAHead);
             this.groupBox4.Location = new System.Drawing.Point(636, 3);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(312, 473);
@@ -197,51 +197,34 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "DFA->MFA";
             // 
-            // button7
+            // btnGenMFA
             // 
-            this.button7.Location = new System.Drawing.Point(7, 415);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
-            this.button7.TabIndex = 22;
-            this.button7.Text = "生成MFA文件";
-            this.button7.UseVisualStyleBackColor = true;
+            this.btnGenMFA.Location = new System.Drawing.Point(7, 415);
+            this.btnGenMFA.Name = "btnGenMFA";
+            this.btnGenMFA.Size = new System.Drawing.Size(75, 23);
+            this.btnGenMFA.TabIndex = 22;
+            this.btnGenMFA.Text = "生成MFA文件";
+            this.btnGenMFA.UseVisualStyleBackColor = true;
+            this.btnGenMFA.Click += new System.EventHandler(this.btnGenMFA_Click);
             // 
-            // dataGridView3
+            // dgMFA
             // 
-            this.dataGridView3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.dgMFA.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView3.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dataGridView3.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgMFA.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgMFA.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dgMFA.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgMFA.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgMFA.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6});
-            this.dataGridView3.Location = new System.Drawing.Point(6, 20);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.RowHeadersVisible = false;
-            this.dataGridView3.RowTemplate.Height = 23;
-            this.dataGridView3.Size = new System.Drawing.Size(299, 334);
-            this.dataGridView3.TabIndex = 17;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "起始状态";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "接受符号";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.HeaderText = "到达状态";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dgMFA.Location = new System.Drawing.Point(6, 20);
+            this.dgMFA.Name = "dgMFA";
+            this.dgMFA.RowHeadersVisible = false;
+            this.dgMFA.RowTemplate.Height = 23;
+            this.dgMFA.Size = new System.Drawing.Size(299, 334);
+            this.dgMFA.TabIndex = 17;
             // 
             // label14
             // 
@@ -261,23 +244,23 @@
             this.label13.TabIndex = 19;
             this.label13.Text = "终止状态集：";
             // 
-            // label11
+            // tbMFATail
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(81, 383);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(29, 12);
-            this.label11.TabIndex = 21;
-            this.label11.Text = "暂无";
+            this.tbMFATail.AutoSize = true;
+            this.tbMFATail.Location = new System.Drawing.Point(81, 383);
+            this.tbMFATail.Name = "tbMFATail";
+            this.tbMFATail.Size = new System.Drawing.Size(29, 12);
+            this.tbMFATail.TabIndex = 21;
+            this.tbMFATail.Text = "暂无";
             // 
-            // label12
+            // tbMFAHead
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(80, 366);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(29, 12);
-            this.label12.TabIndex = 20;
-            this.label12.Text = "暂无";
+            this.tbMFAHead.AutoSize = true;
+            this.tbMFAHead.Location = new System.Drawing.Point(80, 366);
+            this.tbMFAHead.Name = "tbMFAHead";
+            this.tbMFAHead.Size = new System.Drawing.Size(29, 12);
+            this.tbMFAHead.TabIndex = 20;
+            this.tbMFAHead.Text = "暂无";
             // 
             // gruopBox2
             // 
@@ -427,7 +410,7 @@
             this.groupBox3.Controls.Add(this.button5);
             this.groupBox3.Controls.Add(this.dgDFA);
             this.groupBox3.Controls.Add(this.label10);
-            this.groupBox3.Controls.Add(this.button6);
+            this.groupBox3.Controls.Add(this.btnOpenDFA);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.tbDFATail);
             this.groupBox3.Controls.Add(this.tbDFAHead);
@@ -483,6 +466,27 @@
             this.dgDFA.Size = new System.Drawing.Size(299, 334);
             this.dgDFA.TabIndex = 9;
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "start";
+            this.dataGridViewTextBoxColumn1.HeaderText = "起始状态";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "val";
+            this.dataGridViewTextBoxColumn2.HeaderText = "接受符号";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "end";
+            this.dataGridViewTextBoxColumn3.HeaderText = "到达状态";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -492,14 +496,15 @@
             this.label10.TabIndex = 10;
             this.label10.Text = "初始状态集：";
             // 
-            // button6
+            // btnOpenDFA
             // 
-            this.button6.Location = new System.Drawing.Point(5, 413);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(93, 23);
-            this.button6.TabIndex = 14;
-            this.button6.Text = "读入DFA文件";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnOpenDFA.Location = new System.Drawing.Point(5, 413);
+            this.btnOpenDFA.Name = "btnOpenDFA";
+            this.btnOpenDFA.Size = new System.Drawing.Size(93, 23);
+            this.btnOpenDFA.TabIndex = 14;
+            this.btnOpenDFA.Text = "读入DFA文件";
+            this.btnOpenDFA.UseVisualStyleBackColor = true;
+            this.btnOpenDFA.Click += new System.EventHandler(this.btnOpenDFA_Click);
             // 
             // label9
             // 
@@ -528,26 +533,26 @@
             this.tbDFAHead.TabIndex = 12;
             this.tbDFAHead.Text = "暂无";
             // 
-            // dataGridViewTextBoxColumn1
+            // dataGridViewTextBoxColumn4
             // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "start";
-            this.dataGridViewTextBoxColumn1.HeaderText = "起始状态";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "start";
+            this.dataGridViewTextBoxColumn4.HeaderText = "起始状态";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn2
+            // dataGridViewTextBoxColumn5
             // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "val";
-            this.dataGridViewTextBoxColumn2.HeaderText = "接受符号";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "val";
+            this.dataGridViewTextBoxColumn5.HeaderText = "接受符号";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn3
+            // dataGridViewTextBoxColumn6
             // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "end";
-            this.dataGridViewTextBoxColumn3.HeaderText = "到达状态";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "end";
+            this.dataGridViewTextBoxColumn6.HeaderText = "到达状态";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
             // 
             // NFA_DFA_MFAForm
             // 
@@ -563,7 +568,7 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgMFA)).EndInit();
             this.gruopBox2.ResumeLayout(false);
             this.gruopBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgNFA)).EndInit();
@@ -592,21 +597,18 @@
         private System.Windows.Forms.Label tbNFAHead;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.Button btnGenMFA;
+        private System.Windows.Forms.DataGridView dgMFA;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label tbMFATail;
+        private System.Windows.Forms.Label tbMFAHead;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button btnOpenNFA;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.DataGridView dgDFA;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnOpenDFA;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label tbDFATail;
         private System.Windows.Forms.Label tbDFAHead;
@@ -618,5 +620,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
     }
 }
