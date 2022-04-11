@@ -28,12 +28,12 @@ namespace CompilerApp.pages
         {
             string input = tbFormal.Text;
             bool isValid = nfa_dfa_mfaUtil.verifyFormalFormula(input, 0, input.Length);
-            
+
             if (isValid)
             {
                 MessageBox.Show("合法");
                 btnGenNFA.Enabled = true;
-            } 
+            }
             else
             {
                 btnGenNFA.Enabled = true;
@@ -56,8 +56,8 @@ namespace CompilerApp.pages
                 Debug.WriteLine(path.start + " " + path.val + " " + path.end);
             }
 
-            tbNFAHead.Text = pathList.head.ToString();
-            tbNFATail.Text = pathList.tail.ToString();
+            tbNFAHead.Text = String.Join(" ", pathList.head.ToArray<int>());
+            tbNFATail.Text = String.Join(" ", pathList.tail.ToArray<int>());
             dgvDataBind(dgNFA, pathList);
 
             btnGenDFA.Enabled = true;
@@ -72,8 +72,8 @@ namespace CompilerApp.pages
                 dgvDataBind(dgNFA, pathList);
                 btnGenDFA.Enabled = true;
                 nfa_dfa_mfaUtil.nfaPathList = pathList;
-                tbNFAHead.Text = pathList.head.ToString();
-                tbNFATail.Text = pathList.tail.ToString();
+                tbNFAHead.Text = String.Join(" ", pathList.head.ToArray<int>());
+                tbNFATail.Text = String.Join(" ", pathList.tail.ToArray<int>());
             }
         }
 
@@ -91,16 +91,32 @@ namespace CompilerApp.pages
 
         private void btnGenDFA_Click(object sender, EventArgs e)
         {
-            PathList pathList = nfa_dfa_mfaUtil.NFAToDFA();
-            tbDFAHead.Text = pathList.head.ToString();
-            SortedSet<int> tails = new SortedSet<int>();
-            List<SortedSet<int>> T = nfa_dfa_mfaUtil.T;
-            for (int i = 0; i < T.Count; i++)
-                if (T[i].Contains(nfa_dfa_mfaUtil.nfaPathList.tail))
-                    tails.Add(i);
-
-            tbDFATail.Text = String.Join(", ", tails);
+            PathList pathList = nfa_dfa_mfaUtil.nfa2dfa();
+            tbDFAHead.Text = String.Join(" ", pathList.head.ToArray());
+            tbDFATail.Text = String.Join(" ", pathList.tail.ToArray());
             dgvDataBind(dgDFA, pathList);
+        }
+
+        private void btnOpenDFA_Click(object sender, EventArgs e)
+        {
+            PathList pathList = NFA_DFA_MFAFileUtil.readDFAFromFile();
+            if (pathList == null) return;
+            else
+            {
+                dgvDataBind(dgDFA, pathList);
+                btnGenMFA.Enabled = true;
+                nfa_dfa_mfaUtil.dfaPathList = pathList;
+                tbDFAHead.Text = String.Join(" ", pathList.head.ToArray<int>());
+                tbDFATail.Text = String.Join(" ", pathList.tail.ToArray<int>());
+            }
+        }
+
+        private void btnGenMFA_Click(object sender, EventArgs e)
+        {
+            PathList mfaPathList = nfa_dfa_mfaUtil.dfa2mfa();
+            dgvDataBind(dgMFA, mfaPathList);
+            tbMFAHead.Text = String.Join(" ", mfaPathList.head.ToArray<int>());
+            tbMFATail.Text = String.Join(" ", mfaPathList.tail.ToArray<int>());
         }
     }
 }
