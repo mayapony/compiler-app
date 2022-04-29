@@ -36,6 +36,7 @@
             this.编辑ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.编译ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.分词ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nFADFAMFAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -60,7 +61,7 @@
             this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton9 = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.nFADFAMFAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lL1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -118,7 +119,8 @@
             // 
             this.编译ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.分词ToolStripMenuItem,
-            this.nFADFAMFAToolStripMenuItem});
+            this.nFADFAMFAToolStripMenuItem,
+            this.lL1ToolStripMenuItem});
             this.编译ToolStripMenuItem.Name = "编译ToolStripMenuItem";
             this.编译ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.编译ToolStripMenuItem.Text = "编译";
@@ -126,9 +128,16 @@
             // 分词ToolStripMenuItem
             // 
             this.分词ToolStripMenuItem.Name = "分词ToolStripMenuItem";
-            this.分词ToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.分词ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.分词ToolStripMenuItem.Text = "词法分析";
             this.分词ToolStripMenuItem.Click += new System.EventHandler(this.分词ToolStripMenuItem_Click);
+            // 
+            // nFADFAMFAToolStripMenuItem
+            // 
+            this.nFADFAMFAToolStripMenuItem.Name = "nFADFAMFAToolStripMenuItem";
+            this.nFADFAMFAToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.nFADFAMFAToolStripMenuItem.Text = "NFA_DFA_MFA";
+            this.nFADFAMFAToolStripMenuItem.Click += new System.EventHandler(this.nFADFAMFAToolStripMenuItem_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -404,12 +413,12 @@
             this.tableLayoutPanel4.Size = new System.Drawing.Size(741, 459);
             this.tableLayoutPanel4.TabIndex = 5;
             // 
-            // nFADFAMFAToolStripMenuItem
+            // lL1ToolStripMenuItem
             // 
-            this.nFADFAMFAToolStripMenuItem.Name = "nFADFAMFAToolStripMenuItem";
-            this.nFADFAMFAToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-            this.nFADFAMFAToolStripMenuItem.Text = "NFA_DFA_MFA";
-            this.nFADFAMFAToolStripMenuItem.Click += new System.EventHandler(this.nFADFAMFAToolStripMenuItem_Click);
+            this.lL1ToolStripMenuItem.Name = "lL1ToolStripMenuItem";
+            this.lL1ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.lL1ToolStripMenuItem.Text = "LL(1)";
+            this.lL1ToolStripMenuItem.Click += new System.EventHandler(this.lL1ToolStripMenuItem_Click);
             // 
             // Home
             // 
@@ -476,6 +485,7 @@
         private System.Windows.Forms.ToolStripMenuItem 打开ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 保存ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nFADFAMFAToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lL1ToolStripMenuItem;
     }
 }
 

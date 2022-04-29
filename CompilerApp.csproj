@@ -56,6 +56,12 @@
     <Compile Include="models\Error.cs" />
     <Compile Include="models\PathList.cs" />
     <Compile Include="models\Token.cs" />
+    <Compile Include="pages\LL1Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pages\LL1Form.Designer.cs">
+      <DependentUpon>LL1Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="pages\NFA_DFA_MFAForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +75,9 @@
     <Compile Include="utils\TokenUtil.cs" />
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\LL1Form.resx">
+      <DependentUpon>LL1Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="pages\NFA_DFA_MFAForm.resx">
       <DependentUpon>NFA_DFA_MFAForm.cs</DependentUpon>

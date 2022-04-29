@@ -70,5 +70,11 @@ namespace CompilerApp
             NFA_DFA_MFAForm nfa_dfa_mfaForm = new NFA_DFA_MFAForm();
             nfa_dfa_mfaForm.ShowDialog();
         }
+
+        private void lL1ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LL1Form ll1form = new LL1Form();
+            ll1form.ShowDialog();
+        }
     }
 }
