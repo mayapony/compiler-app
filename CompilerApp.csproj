@@ -54,6 +54,7 @@
     <Compile Include="menus\CompilerMenu.cs" />
     <Compile Include="menus\FileMenu.cs" />
     <Compile Include="models\Error.cs" />
+    <Compile Include="models\Path.cs" />
     <Compile Include="models\PathList.cs" />
     <Compile Include="models\Token.cs" />
     <Compile Include="pages\LL1Form.cs">
