@@ -40,8 +40,8 @@
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnReadGrammer = new System.Windows.Forms.Button();
+            this.tbGrammars = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -179,7 +179,7 @@
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.Controls.Add(this.label1, 0, 1);
             this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel6, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.textBox1, 0, 2);
+            this.tableLayoutPanel5.Controls.Add(this.tbGrammars, 0, 2);
             this.tableLayoutPanel5.Location = new System.Drawing.Point(6, 20);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 3;
@@ -213,7 +213,7 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel6.Controls.Add(this.button3, 2, 0);
             this.tableLayoutPanel6.Controls.Add(this.button2, 1, 0);
-            this.tableLayoutPanel6.Controls.Add(this.button1, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.btnReadGrammer, 0, 0);
             this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
@@ -245,28 +245,31 @@
             this.button2.Text = "确认文法";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnReadGrammer
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btnReadGrammer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(3, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(108, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "打开文件";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnReadGrammer.Location = new System.Drawing.Point(3, 3);
+            this.btnReadGrammer.Name = "btnReadGrammer";
+            this.btnReadGrammer.Size = new System.Drawing.Size(108, 23);
+            this.btnReadGrammer.TabIndex = 0;
+            this.btnReadGrammer.Text = "打开文件";
+            this.btnReadGrammer.UseVisualStyleBackColor = true;
+            this.btnReadGrammer.Click += new System.EventHandler(this.btnReadGrammer_Click);
             // 
-            // textBox1
+            // tbGrammars
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tbGrammars.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(3, 74);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(343, 151);
-            this.textBox1.TabIndex = 2;
+            this.tbGrammars.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tbGrammars.Location = new System.Drawing.Point(3, 74);
+            this.tbGrammars.Multiline = true;
+            this.tbGrammars.Name = "tbGrammars";
+            this.tbGrammars.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tbGrammars.Size = new System.Drawing.Size(343, 151);
+            this.tbGrammars.TabIndex = 2;
             // 
             // tableLayoutPanel3
             // 
@@ -493,8 +496,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btnReadGrammer;
+        private System.Windows.Forms.TextBox tbGrammars;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox4;
