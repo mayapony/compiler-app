@@ -93,59 +93,47 @@ namespace CompilerApp.utils
         public PathList formulaToNFA(string formula, int left, int right)
         {
             Debug.WriteLine("正规式转NFA...");
-            Debug.WriteLine("输入的正规式是：", formula);
-
+            Debug.WriteLine("输入的正规式是：" + formula.Substring(left, right - left));
+            PathList subPathList = null;
+            // ad(bc | bd) * bd
             for (int i = left; i < right; i++)
             {
                 char cur = formula[i];
 
                 if (char.IsLetter(cur))
                 {
-                    if (nfaPathList != null) nfaPathList.connectPathList(new PathList(cur));
-                    else nfaPathList = new PathList(cur);
+                    PathList newPathList = new PathList(cur);
+                    if (i + 1 < right && formula[i + 1] == '*') newPathList.closurePathList();
+                    if (subPathList != null) subPathList.connectPathList(newPathList);
+                    else subPathList = newPathList;
                 }
                 else if (cur == '(')
                 {
                     int rPos = findRightBracket(formula, i, right);
-                    if (nfaPathList != null) nfaPathList.connectPathList(formulaToNFA(formula, i + 1, rPos));
-                    else nfaPathList = formulaToNFA(formula, i + 1, rPos);
+                    PathList newPathList = formulaToNFA(formula, i + 1, rPos);
+                    if (rPos + 1 < right && formula[rPos + 1] == '*')
+                    {
+                        newPathList.closurePathList();
+                    }
+                    if (subPathList != null) subPathList.connectPathList(newPathList);
+                    else subPathList = newPathList;
                     i = rPos;
                 }
-                else if (cur == '*') nfaPathList.closurePathList();
                 else if (cur == '|')
                 {
-                    cur = formula[++i];
-                    if (char.IsLetter(cur)) nfaPathList.parallelPathList(new PathList(cur));
-                    else if (cur == '(')
-                    {
-                        int rPos = findRightBracket(formula, i, right);
-                        nfaPathList.parallelPathList(formulaToNFA(formula, i + 1, rPos));
-                        i = rPos;
-                    }
+                    //cur = formula[++i];
+                    PathList newPathList = formulaToNFA(formula, i + 1, right);
+                    subPathList.parallelPathList(newPathList);
+                    break;
                 }
             }
 
-            return nfaPathList;
+            nfaPathList = subPathList;
+            return subPathList;
         }
 
         /// <summary>
         /// 将NFA转换为DFA
-        /// 输入NFA，例：
-        /// 起始状态：0 
-        /// 终止状态：10
-        /// 0 # 1
-        /// 1 # 2
-        /// 1 # 4
-        /// 2 a 3
-        /// 4 b 5
-        /// 3 # 6
-        /// 5 # 6
-        /// 6 # 1
-        /// 6 # 7
-        /// 7 a 8
-        /// 0 # 7
-        /// 8 b 9
-        /// 9 b 10
         /// </summary>
         /// <returns>转换后的DFA</returns>
         public PathList nfa2dfa()
@@ -200,8 +188,9 @@ namespace CompilerApp.utils
                     {
                         // 找到它在C中对应到的下标
                         int end = tStr.FindIndex(str => str == uStr);
-                        // 添加一条路径 从 i ---val---> end
-                        paths.Add(new Path(i, end, val));
+                        if (end != -1)
+                            // 添加一条路径 从 i ---val---> end
+                            paths.Add(new Path(i, end, val));
                     }
                 });
             }
@@ -280,6 +269,7 @@ namespace CompilerApp.utils
                 {
                     int curSet = curSets.ElementAt(i);
                     int curMoveRes = findThisEnd(curSet, inputChar);
+                    if (curMoveRes == -1) continue;
                     // 如果待分离的集合内 有与move(a)后的集合中的第一个属于集合的，以转移后的第一个元素为基准
                     Debug.WriteLine("curMoveRes is：" + curMoveRes.ToString());
                     Debug.WriteLine("curMoveRes in: " + findCharInSets(curMoveRes).ToString());
@@ -317,10 +307,9 @@ namespace CompilerApp.utils
                 {
                     // 在原DFA里通过这个状态能到达end
                     int end = findThisEnd(curSet.ElementAt(0), inputCharSets[j]);
-                    Debug.WriteLine("end is: " + end.ToString());
-                    Debug.WriteLine("findCharInSets is: " + findCharInSets(end).ToString());
                     if (end == -1) continue;
-                    paths.Add(new Path(i, findCharInSets(end), inputCharSets[j]));
+                    if (findCharInSets(end) != -1)
+                        paths.Add(new Path(i, findCharInSets(end), inputCharSets[j]));
                 }
             }
             return new PathList(heads, tails, paths);
