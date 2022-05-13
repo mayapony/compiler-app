@@ -225,6 +225,8 @@ namespace CompilerApp.utils
                 if (dfaPathList.tail.Contains(state)) left.Add(state);
                 else right.Add(state);
             });
+            Debug.WriteLine(String.Join(", ", left));
+            Debug.WriteLine(String.Join(", ", right));
             stateSets.Add(right);
             stateSets.Add(left);
             if (left.Count == 0 || right.Count == 0)
@@ -235,8 +237,7 @@ namespace CompilerApp.utils
                 inputCharSets.ForEach(val => paths.Add(new Path(0, 0, val)));
                 return new PathList(heads, tails, paths);
             }
-            divideStateSet(right);
-            divideStateSet(left);
+            divideStateSet(stateSets);
             stateSets.Sort((x, y) => x.ElementAt(0).CompareTo(y.ElementAt(0)));
             Debug.WriteLine("RESULT:");
             stateSets.ForEach(set => Debug.WriteLine(string.Join(" ", set)));
@@ -245,48 +246,55 @@ namespace CompilerApp.utils
             paths.ForEach(path => Debug.WriteLine(path.start + " " + path.end + " " + path.val));
             return constructPathList(); ;
         }
+
+
         /// <summary>
         /// 对输入的状态集进行划分
         /// </summary>
         /// <param name="curSets">待划分状态集</param>
-        private void divideStateSet(SortedSet<int> curSets)
+        private void divideStateSet(List<SortedSet<int>> curSets)
         {
-            Debug.WriteLine(String.Join(" ", curSets));
             if (curSets.Count <= 1) return;
-            foreach (char inputChar in inputCharSets) // 对每个输入字符进行判断
+            bool needDiv = false;
+            int count = curSets.Count;
+            for (int j = 0; j < count; j++)
             {
-                List<int> moveResList = move(curSets, inputChar, dfaPathList).ToList(); // 通过输入字符转移到的状态集
-                Debug.WriteLine(string.Join(" ", moveResList));
-                SortedSet<int> left = new SortedSet<int>(); // 划分的左集合
-                SortedSet<int> right = new SortedSet<int>(); // 划分的右集合
-                // 如果转移后只有一个状态或者转移后的状态完全被当前集合包括 直接看下一个输入字符
-                if (moveResList.Count == 1 || isAContainB(curSets.ToList(), moveResList)) continue;
-                // 因为等下要拆分所以这里先将当前集合删掉
-                if (!haveStateSet(curSets)) // 如果当前状态集已经不存在了
-                    return;
-                // 遍历当前集合的每个元素
-                for (int i = 0; i < curSets.Count; i++)
+                needDiv = false;
+                SortedSet<int> curSet = curSets[j];
+                if (curSet.Count <= 1) continue;
+                foreach (char inputChar in inputCharSets) // 对每个输入字符进行判断
                 {
-                    int curSet = curSets.ElementAt(i);
-                    int curMoveRes = findThisEnd(curSet, inputChar);
-                    if (curMoveRes == -1) continue;
-                    // 如果待分离的集合内 有与move(a)后的集合中的第一个属于集合的，以转移后的第一个元素为基准
-                    Debug.WriteLine("curMoveRes is：" + curMoveRes.ToString());
-                    Debug.WriteLine("curMoveRes in: " + findCharInSets(curMoveRes).ToString());
-                    Debug.WriteLine("moveRes[0] in: " + findCharInSets(moveResList[0]).ToString());
-                    if (findCharInSets(curMoveRes) == findCharInSets(moveResList[0]))
-                        left.Add(curSet);
-                    else
-                        right.Add(curSet);
+                    SortedSet<int> left = new SortedSet<int>(); // 划分的一半集合
+                    SortedSet<int> right = new SortedSet<int>(); // 划分的另一半集合
+                    // 遍历当前集合的每个元素
+                    for (int i = 0; i < curSet.Count; i++)
+                    {
+                        int curset = curSet.ElementAt(i);
+                        int curMoveRes = findThisEnd(curset, inputChar);
+                        if (findCharInSets(curMoveRes) == findCharInSets(findThisEnd(curSet.ElementAt(0), inputChar)))
+                            left.Add(curset);
+                        else
+                            right.Add(curset);
+                    }
+
+                    if (left.Count != 0 && right.Count != 0)
+                    {
+                        // 将两个加入所有状态集的集合
+                        stateSets.Remove(curSet);
+                        stateSets.Add(left);
+                        stateSets.Add(right);
+                        needDiv = true;
+                        break; //集合已经被再分，退出循环
+                    }
                 }
-                // 先将左右加入所有状态集的集合
-                stateSets.Remove(curSets);
-                stateSets.Add(left);
-                stateSets.Add(right);
-                divideStateSet(left);
-                divideStateSet(right);
+                if (needDiv) break;//如果已经有状态集被分则退出循环
             }
+            if (needDiv)
+                divideStateSet(stateSets);
+            return;
         }
+
+
         /// <summary>
         /// 利用划分的结果构造MFA
         /// </summary>

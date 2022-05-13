@@ -21,7 +21,7 @@ namespace CompilerApp.pages
         public NFA_DFA_MFAForm()
         {
             InitializeComponent();
-            tbFormal.Text = "(a*|b)*";
+            tbFormal.Text = "ad(bc|bd)*bd";
         }
 
         private void btnValidFormal_Click(object sender, EventArgs e)
