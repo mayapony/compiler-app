@@ -65,7 +65,7 @@ namespace CompilerApp.utils.LL1
 
                         FirstSet[Yi].ToList().ForEach(f =>
                         {
-                            if (!curUnTFirsts.Contains(f) && f != "#")
+                            if (!curUnTFirsts.Contains(f) && f != GrammarUtil.empty)
                             {
                                 FirstSet[unT].Add(f);
                                 changed = true;
@@ -85,9 +85,9 @@ namespace CompilerApp.utils.LL1
                             }
                         });
                     }
-                    else if (i == right.Length && !FirstSet[unT].Contains("#"))
+                    else if (i == right.Length && !FirstSet[unT].Contains(GrammarUtil.empty))
                     {
-                        FirstSet[unT].Add("#");
+                        FirstSet[unT].Add(GrammarUtil.empty);
                         changed = true;
                     }
                 }
@@ -96,7 +96,7 @@ namespace CompilerApp.utils.LL1
         }
         private bool canToEmpty(string unT)
         {
-            return TransferDict[unT].Contains("#");
+            return TransferDict[unT].Contains(GrammarUtil.empty);
         }
 
         private bool cantToEmpty(string unT)
@@ -143,7 +143,11 @@ namespace CompilerApp.utils.LL1
             int cnt = 0;
             foreach (string right in rights)
                 foreach (char ch in right)
-                    if (GrammarUtil.isTerminal(ch.ToString()) || char.IsUpper(ch) && canToEmptyUnTSet[ch.ToString()] == unTStatus.No) cnt++;
+                    if (GrammarUtil.isTerminal(ch.ToString()) || char.IsUpper(ch) && canToEmptyUnTSet[ch.ToString()] == unTStatus.No)
+                    {
+                        cnt++;
+                        break;
+                    }
             return cnt == rights.Length;
         }
 

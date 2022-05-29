@@ -35,7 +35,7 @@ namespace CompilerApp.utils.LL1
                         {
                             GrammarUtil.FirstSet[curChar].ToList().ForEach(first =>
                             {
-                                if (first != "#") SelectSet[key].Add(first);
+                                if (first != GrammarUtil.empty) SelectSet[key].Add(first);
                             });
                         }
                         else if (GrammarUtil.canToEmptyUnTSet[curChar] == unTStatus.No)
@@ -44,7 +44,7 @@ namespace CompilerApp.utils.LL1
                             break;
                         }
                     }
-                    if (right == "#" || i == right.Length)
+                    if (right == GrammarUtil.empty || i == right.Length)
                     {
                         GrammarUtil.FollowSet[unT].ToList().ForEach(follow => SelectSet[key].Add(follow));
                     }

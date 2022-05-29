@@ -56,7 +56,7 @@ namespace CompilerApp.utils.LL1
                                     if (addFollowSet(unT, curChar)) changed = true;
                                 }
                             }
-                            if (next) i--;
+                            break;
                         }
                     }
                     if (i == right.Length && right.Contains(unT))
@@ -79,8 +79,11 @@ namespace CompilerApp.utils.LL1
             bool res = false;
             GrammarUtil.FirstSet[otherUnT].ToList().ForEach(first =>
             {
-                if (!FollowSet[unT].Contains(first)) res = true;
-                FollowSet[unT].Add(first);
+                if (first != GrammarUtil.empty)
+                {
+                    if (!FollowSet[unT].Contains(first)) res = true;
+                    FollowSet[unT].Add(first);
+                }
             });
             return res;
         }

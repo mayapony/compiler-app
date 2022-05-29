@@ -1,0 +1,4 @@
+A->aT
+T->ABl |$
+B->dF   
+F->bF |$

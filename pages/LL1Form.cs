@@ -30,6 +30,9 @@ namespace CompilerApp.pages
         private void btnAccept_Click(object sender, EventArgs e)
         {
             GrammarUtil.genGrammarDict(tbGrammars.Lines);
+            List<string> firsts = new List<string>();
+            List<string> follows = new List<string>();
+            List<string> selects = new List<string>();
 
             ll1Util.confirmGrammar();
 
@@ -43,21 +46,27 @@ namespace CompilerApp.pages
                 Debug.WriteLine(pair.Key + ": " + String.Join(", ", pair.Value));
             }
 
-
             foreach (KeyValuePair<string, HashSet<string>> pair in GrammarUtil.FirstSet)
             {
                 Debug.WriteLine(pair.Key + ": " + String.Join(", ", pair.Value));
+                firsts.Add(pair.Key + ": " + String.Join(", ", pair.Value));
             }
 
             foreach (KeyValuePair<string, HashSet<string>> pair in GrammarUtil.FollowSet)
             {
                 Debug.WriteLine(pair.Key + ": " + String.Join(", ", pair.Value));
+                follows.Add(pair.Key + ": " + String.Join(", ", pair.Value));
             }
 
             foreach (KeyValuePair<string, SortedSet<string>> pair in GrammarUtil.SelectSet)
             {
                 Debug.WriteLine(pair.Key + ": " + String.Join(", ", pair.Value));
+                selects.Add(pair.Key + ": " + String.Join(", ", pair.Value));
             }
+            tbFirst.Lines = firsts.ToArray();
+            tbFollow.Lines = follows.ToArray();
+            tbTable.Lines = selects.ToArray();
         }
+
     }
 }
