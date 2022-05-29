@@ -72,8 +72,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="utils\LL1\FirstUtil.cs" />
+    <Compile Include="utils\LL1\FollowUtil.cs" />
     <Compile Include="utils\LL1\GrammarUtil.cs" />
     <Compile Include="utils\LL1\LL1FileUtil.cs" />
+    <Compile Include="utils\LL1\LL1Util.cs" />
     <Compile Include="utils\NFA_DFA_MFA\NFA_DFA_MFAFileUtil.cs" />
     <Compile Include="utils\NFA_DFA_MFA\NFA_DFA_MFAUtil.cs" />
     <Compile Include="utils\Token\TokenUtil.cs" />
@@ -107,6 +110,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="test\dfa.txt" />
+    <Content Include="test\grammar1.txt" />
+    <Content Include="test\grammar2.txt" />
+    <Content Include="test\grammar3.txt" />
+    <Content Include="test\nfa.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
