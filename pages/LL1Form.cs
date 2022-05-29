@@ -53,6 +53,11 @@ namespace CompilerApp.pages
             {
                 Debug.WriteLine(pair.Key + ": " + String.Join(", ", pair.Value));
             }
+
+            foreach (KeyValuePair<string, SortedSet<string>> pair in GrammarUtil.SelectSet)
+            {
+                Debug.WriteLine(pair.Key + ": " + String.Join(", ", pair.Value));
+            }
         }
     }
 }

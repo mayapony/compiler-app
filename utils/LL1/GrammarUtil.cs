@@ -19,6 +19,7 @@ namespace CompilerApp.utils.LL1
 
         public static Dictionary<string, HashSet<string>> FirstSet = new Dictionary<string, HashSet<string>>(); // First集合
         public static Dictionary<string, HashSet<string>> FollowSet = new Dictionary<string, HashSet<string>>(); // Follow集合
+        public static Dictionary<string, SortedSet<string>> SelectSet = new Dictionary<string, SortedSet<string>>(); // Follow集合
 
         /// <summary>
         /// 从输入的转移式生成文法字典

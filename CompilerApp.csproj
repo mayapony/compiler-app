@@ -77,6 +77,7 @@
     <Compile Include="utils\LL1\GrammarUtil.cs" />
     <Compile Include="utils\LL1\LL1FileUtil.cs" />
     <Compile Include="utils\LL1\LL1Util.cs" />
+    <Compile Include="utils\LL1\SelectUtil.cs" />
     <Compile Include="utils\NFA_DFA_MFA\NFA_DFA_MFAFileUtil.cs" />
     <Compile Include="utils\NFA_DFA_MFA\NFA_DFA_MFAUtil.cs" />
     <Compile Include="utils\Token\TokenUtil.cs" />
