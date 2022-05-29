@@ -12,6 +12,8 @@ namespace CompilerApp.utils.LL1
         {
             FirstUtil firstUtil = new FirstUtil();
             firstUtil.genFirstSet();
+            FollowUtil followUtil = new FollowUtil();
+            followUtil.genFollowSet();
         }
     }
 }

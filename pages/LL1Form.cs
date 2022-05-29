@@ -48,6 +48,11 @@ namespace CompilerApp.pages
             {
                 Debug.WriteLine(pair.Key + ": " + String.Join(", ", pair.Value));
             }
+
+            foreach (KeyValuePair<string, HashSet<string>> pair in GrammarUtil.FollowSet)
+            {
+                Debug.WriteLine(pair.Key + ": " + String.Join(", ", pair.Value));
+            }
         }
     }
 }
